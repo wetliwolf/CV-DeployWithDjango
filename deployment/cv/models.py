@@ -1,3 +1,3 @@
 from django.db import models
 
-# Cr
+# Create your mode
