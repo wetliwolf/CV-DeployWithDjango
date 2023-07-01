@@ -36,3 +36,15 @@ def classification(request):
         img = image.load_img(img_file_, target_size=(224, 224))
         # `x` is a float32 Numpy array of shape (224, 224, 3)
         x = image.img_to_array(img)
+
+        # We add a dimension to transform our array into a "batch"
+        # of size (1, 224, 224, 3)
+        x = np.expand_dims(x, axis=0)
+
+        # Finally we preprocess the batch
+        # (this does channel-wise color normalization)
+        x = preprocess_input(x)
+        model = VGG16(weights='imagenet')
+        preds = model.predict(x)
+        print('Predicted:', decode_predictions(preds, top=3)[0])
+        pred = decode_predictions(preds, top=1)[0][0][1]
