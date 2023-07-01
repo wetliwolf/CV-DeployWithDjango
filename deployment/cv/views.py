@@ -20,3 +20,19 @@ import cv2
 
 def base(request):
         
+    return render(request, 'cv/base.html')        
+
+
+def classification(request):
+    if request.method == 'POST' and request.FILES['myfile']:
+        
+        myfile = request.FILES['myfile']
+        fs = FileSystemStorage()
+        filename = fs.save(myfile.name, myfile)
+        img_file = fs.url(filename)
+        
+        # `img` is a PIL image of size 224x224
+        img_file_ = settings.BASE_DIR + '/' + img_file
+        img = image.load_img(img_file_, target_size=(224, 224))
+        # `x` is a float32 Numpy array of shape (224, 224, 3)
+        x = image.img_to_array(img)
