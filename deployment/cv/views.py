@@ -48,3 +48,16 @@ def classification(request):
         preds = model.predict(x)
         print('Predicted:', decode_predictions(preds, top=3)[0])
         pred = decode_predictions(preds, top=1)[0][0][1]
+        #return render(request, 'cv/upload.html', {'uploaded_file_url': uploaded_file_url})
+        return render(request, 'cv/classification.html', {'original_img': img_file,
+                                                            'prediction': pred})
+        
+    return render(request, 'cv/classification.html')        
+
+def load_model():
+    # load the model for inference 
+    model = models.segmentation.fcn_resnet101(pretrained=True).eval()
+    return model
+
+def get_segmentation(img_file, model):
+    input_image = Image.open(img_file)
