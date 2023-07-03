@@ -75,3 +75,15 @@ def get_segmentation(img_file, model):
         model.to('cuda')
 
     with torch.no_grad():
+        output = model(input_batch)['out'][0]
+    output_predictions = output.argmax(0)
+    return output_predictions
+
+
+label_colors = np.array([(0, 0, 0),  # 0=background
+              # 1=aeroplane, 2=bicycle, 3=bird, 4=boat, 5=bottle
+              (128, 0, 0), (0, 128, 0), (128, 128, 0), (0, 0, 128), (128, 0, 128),
+              # 6=bus, 7=car, 8=cat, 9=chair, 10=cow
+              (0, 128, 128), (128, 128, 128), (64, 0, 0), (192, 0, 0), (64, 128, 0),
+              # 11=dining table, 12=dog, 13=horse, 14=motorbike, 15=person
+              (192, 128, 0), (64, 0, 128), (192, 0, 128), (64, 128, 128), (192, 128, 128),
