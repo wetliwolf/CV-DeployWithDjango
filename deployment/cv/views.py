@@ -101,3 +101,14 @@ def seg2rgb(preds):
 
 
 def semantic_segmentation(request):
+    if request.method == 'POST' and request.FILES['myfile']:
+        
+        myfile = request.FILES['myfile']
+        fs = FileSystemStorage()
+        filename = fs.save(myfile.name, myfile)
+        img_file = fs.url(filename)
+        
+        # `img` is a PIL image of size 224x224
+        img_file_ = settings.BASE_DIR + '/' + img_file
+        img = Image.open(img_file_)
+        model = load_model()
