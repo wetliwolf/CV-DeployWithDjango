@@ -112,3 +112,13 @@ def semantic_segmentation(request):
         img_file_ = settings.BASE_DIR + '/' + img_file
         img = Image.open(img_file_)
         model = load_model()
+        preds = get_segmentation(img_file_, model)
+        rgb = seg2rgb(preds)
+        
+        seg_file = settings.MEDIA_ROOT + '/seg_img.png' 
+        rgb.save(seg_file)
+
+        return render(request, 'cv/semantic_segmentation.html', {'original_img': img_file,
+                                                                 'segmented_img': '/media/seg_img.png'})
+        
+    return render(request, 'cv/semantic_segmentation.html')  
