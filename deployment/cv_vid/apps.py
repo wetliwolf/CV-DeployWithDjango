@@ -1,1 +1,1 @@
-from django
+from django.apps im
