@@ -1,1 +1,4 @@
-from django.apps import AppConfi
+from django.apps import AppConfig
+
+
+class CvVidC
