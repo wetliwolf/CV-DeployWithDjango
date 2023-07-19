@@ -1,1 +1,1 @@
-from django.apps im
+from django.apps import AppConfi
