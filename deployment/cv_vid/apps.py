@@ -2,4 +2,4 @@ from django.apps import AppConfig
 
 
 class CvVidConfig(AppConfig):
-    name = 'c
+    name = 'cv_vid'
