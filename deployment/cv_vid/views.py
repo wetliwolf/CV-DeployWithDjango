@@ -43,3 +43,13 @@ def get_segmentation(input_image, model):
     if torch.cuda.is_available():
         input_batch = input_batch.to('cuda')
         model.to('cuda')
+
+    with torch.no_grad():
+        output = model(input_batch)['out'][0]
+    output_predictions = output.argmax(0)
+    rgb = seg2rgb(output_predictions)
+    rgb = np.array(rgb)
+    return rgb
+
+
+label_colors = np.array([(0, 0, 0),  # 0=background
