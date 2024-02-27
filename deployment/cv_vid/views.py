@@ -80,3 +80,15 @@ def semantic_segmentation(request):
         fs = FileSystemStorage()
         filename = fs.save(myfile.name, myfile)
         video_file = fs.url(filename)
+
+        video_file_ = settings.BASE_DIR + '/' + video_file
+            
+        model = load_model()
+        video_output = 'output.mp4'
+
+        clip = VideoFileClip(video_file_)
+        
+        def process_frame(frame):        
+            #img = Image.open(img_file_)
+            #img = cv2.imread(filename)
+            #img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
