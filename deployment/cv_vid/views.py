@@ -68,3 +68,15 @@ def seg2rgb(preds):
 
     # plot the semantic segmentation predictions of 21 classes in each color
     rgb = Image.fromarray(preds.byte().cpu().numpy())#.resize(preds.shape)
+    rgb.putpalette(colors)
+    rgb = rgb.convert('RGB')
+    return rgb
+
+
+def semantic_segmentation(request):
+    if request.method == 'POST' and request.FILES['myfile']:
+        
+        myfile = request.FILES['myfile']
+        fs = FileSystemStorage()
+        filename = fs.save(myfile.name, myfile)
+        video_file = fs.url(filename)
