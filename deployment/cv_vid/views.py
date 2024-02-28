@@ -92,3 +92,14 @@ def semantic_segmentation(request):
             #img = Image.open(img_file_)
             #img = cv2.imread(filename)
             #img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+
+            return get_segmentation(frame, model)
+        
+        video_output = settings.MEDIA_ROOT + '/seg_vid.mp4'
+        seg_clip = clip.fl_image(process_frame)
+        seg_clip.write_videofile(video_output, audio=False)
+
+
+        return render(request, 'cv_vid/semantic_segmentation.html', {'original_vid': video_file,
+                                                                     'segmented_vid': '/media/seg_vid.mp4'})
+    return render(request, 'cv_vid/semantic_segmentation.html')  
