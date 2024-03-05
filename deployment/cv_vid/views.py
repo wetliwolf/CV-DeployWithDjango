@@ -132,3 +132,15 @@ def get_prediction(img_path, threshold):
     pred_boxes = pred_boxes[:pred_t+1]
     pred_class = pred_class[:pred_t+1]
     return pred_boxes, pred_class
+
+
+def object_detection(request):
+    if request.method == 'POST' and request.FILES['myfile']:
+        
+        myfile = request.FILES['myfile']
+        fs = FileSystemStorage()
+        filename = fs.save(myfile.name, myfile)
+        img_file = fs.url(filename)
+        
+        rect_th = 1 
+        text_size = 0.2
