@@ -144,3 +144,19 @@ def object_detection(request):
         
         rect_th = 1 
         text_size = 0.2
+        text_th = 1
+        img_file_ = settings.BASE_DIR + '/' + img_file
+        boxes, pred_cls = get_prediction(img_file_, threshold=0.8) # Get predictions
+        img = cv2.imread(img_file_) # Read image with cv2
+        img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB) # Convert to RGB
+        #plt.imshow(img)
+        #plt.show()
+        for box, cls in zip(boxes, pred_cls):#range(len(boxes)):
+            cv2.rectangle(img, box[0], box[1],color=(0, 255, 0), thickness=rect_th) # Draw Rectangle with the coordinates
+            cv2.putText(img,cls, box[0],  cv2.FONT_HERSHEY_SIMPLEX, text_size, (0,255,0),thickness=text_th) # Write the prediction class
+        
+        
+        obb_file = settings.MEDIA_ROOT + '/obb_img.png' 
+        cv2.imwrite(obb_file, img)
+
+        return render(request, 'cv/object_detection.html', {'original_img': img_file,
