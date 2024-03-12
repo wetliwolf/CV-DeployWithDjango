@@ -1,2 +1,2 @@
 """
-ASGI config fo
+ASGI config for deploymen
