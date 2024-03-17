@@ -1,4 +1,4 @@
 """
 ASGI config for deployment project.
 
-It exposes the A
+It exposes the ASGI callable
