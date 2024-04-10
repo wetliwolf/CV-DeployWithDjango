@@ -7,4 +7,6 @@ For more information on this file, see
 https://docs.djangoproject.com/en/3.0/howto/deployment/asgi/
 """
 
-impo
+import os
+
+from 
