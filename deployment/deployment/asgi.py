@@ -9,4 +9,4 @@ https://docs.djangoproject.com/en/3.0/howto/deployment/asgi/
 
 import os
 
-from django.core.as
+from django.core.asgi import 
