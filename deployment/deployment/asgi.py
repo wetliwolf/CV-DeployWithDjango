@@ -11,4 +11,4 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.en
+os.environ.setdefault('DJ
