@@ -25,3 +25,17 @@ SECRET_KEY = '0ex3px)8r!m@d9ig3hj8*=(+&_8^-!d8f^%dj*a87n)wfop#sv'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+
+ALLOWED_HOSTS = []
+
+
+# Application definition
+
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'cv'
