@@ -1,2 +1,2 @@
 """
-WSGI confi
+WSGI config for deplo
