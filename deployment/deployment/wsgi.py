@@ -1,2 +1,2 @@
 """
-WSGI config for deplo
+WSGI config for deployment pr
