@@ -1,4 +1,4 @@
 """
 WSGI config for deployment project.
 
-It exposes the WSGI callable a
+It exposes the WSGI callable as a module-l
