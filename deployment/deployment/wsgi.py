@@ -9,4 +9,4 @@ https://docs.djangoproject.com/en/3.0/howto/deployment/wsgi/
 
 import os
 
-from django.core.ws
+from django.core.wsgi import get
